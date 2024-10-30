@@ -1,0 +1,111 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Subscription Platform API Documentation",
+        "description": "API for managing posts and subscriptions",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/website/{id}/post": {
+            "post": {
+                "tags": [
+                    "Posts"
+                ],
+                "summary": "Create a new post",
+                "description": "Creates a new post for a specific website",
+                "operationId": "b215b5474b96df51da2de478bf56760e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Website ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Post created successfully"
+                    },
+                    "404": {
+                        "description": "Website not found"
+                    }
+                }
+            }
+        },
+        "/api/website/{id}/subscribe": {
+            "post": {
+                "tags": [
+                    "Subscriptions"
+                ],
+                "summary": "Subscribe a user to a website",
+                "description": "Subscribe a user to receive posts from a specific website",
+                "operationId": "2f7dc312d061f106b666532d173151f7",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Website ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Subscription created successfully"
+                    },
+                    "404": {
+                        "description": "Website not found"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Posts",
+            "description": "Posts"
+        },
+        {
+            "name": "Subscriptions",
+            "description": "Subscriptions"
+        }
+    ]
+}
